@@ -67,6 +67,7 @@ export function pokemonToMarkdown(pokemon: Pokemon): string {
 
 **Slug**: ${slug}  
 **Génération API**: ${apiGeneration}
+**Id**: ${pokedexId}
 
 ![Artwork](${image})  
 ![Sprite](${sprite})

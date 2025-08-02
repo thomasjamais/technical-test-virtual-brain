@@ -42,12 +42,10 @@ const PokemonApp: React.FC = () => {
         setSelectedTypes={setSelectedTypes}
         refetch={refetch}
       />
-      {selectedPokemon && selectedPokemon.length > 0 && (
-        <ChoosedPokemons
-          selectedPokemon={selectedPokemon}
-          setSelectedPokemon={setSelectedPokemon}
-        />
-      )}
+      <ChoosedPokemons
+        selectedPokemon={selectedPokemon}
+        setSelectedPokemon={setSelectedPokemon}
+      />
 
       <PokemonList
         pokemons={pokemons || []}

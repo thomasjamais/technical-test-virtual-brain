@@ -5,7 +5,7 @@ import Card from "./Card";
 import { useTheme } from "./ThemeContext";
 
 type ChoosedPokemonsProps = {
-  selectedPokemon: Pokemon[];
+  selectedPokemon: Pokemon[] | null;
   setSelectedPokemon?: React.Dispatch<React.SetStateAction<Pokemon[] | null>>;
 };
 
@@ -22,14 +22,19 @@ const ChoosedPokemons: React.FC<ChoosedPokemonsProps> = ({
         theme === "light" ? "" : "bg-slate-800"
       }`}
     >
-      {selectedPokemon.length === 1 && (
-        <h2 className="text-2xl font-bold mb-4">
+      {(!selectedPokemon || selectedPokemon.length === 0) && (
+        <h2 className="text-2xl font-thin mb-4">
+          Choisissez au moins deux Pokémons pour démarrer le combat
+        </h2>
+      )}
+      {selectedPokemon?.length === 1 && (
+        <h2 className="text-2xl font-thin mb-4">
           Choisissez encore un autre pokemon au moins pour démarer le combat :
         </h2>
       )}
-      {selectedPokemon.length > 1 && (
+      {selectedPokemon && selectedPokemon.length > 1 && (
         <div>
-          <h2 className="text-2xl font-bold mb-4">
+          <h2 className="text-2xl font-thin mb-4">
             {selectedPokemon.length} Pokémons prêts pour le combat
           </h2>
           <button
@@ -47,7 +52,7 @@ const ChoosedPokemons: React.FC<ChoosedPokemonsProps> = ({
         </div>
       )}
 
-      {selectedPokemon.map((pokemon) => (
+      {selectedPokemon?.map((pokemon) => (
         <Card
           key={pokemon.id}
           pokemon={pokemon}
